@@ -1,0 +1,17 @@
+.button {
+  color: var(--primary-text-light);
+  background-color: var(--primary-background-light);
+  border: 1px solid var(--primary-border-light);
+  padding: var(--button-padding);
+  border-radius: var(--button-borderRadius);
+  font-size: var(--button-fontSize);
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .button {
+    color: var(--primary-text-dark);
+    background-color: var(--primary-background-dark);
+    border: 1px solid var(--primary-border-dark);
+  }
+}

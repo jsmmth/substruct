@@ -1,0 +1,52 @@
+diff --git a/dist/rollup-plugin-dts.cjs b/dist/rollup-plugin-dts.cjs
+index 781bc96383f2cb0c8b2930016661ecb6482dad0e..e2484ecd563c228d4fbe8f309de97eca375d986f 100644
+--- a/dist/rollup-plugin-dts.cjs
++++ b/dist/rollup-plugin-dts.cjs
+@@ -1511,20 +1511,9 @@ const transform = () => {
+     const allFileReferences = new Map();
+     return {
+         name: "dts-transform",
+-        options({ onLog, ...options }) {
++        options({ ...options }) {
+             return {
+                 ...options,
+-                onLog(level, log, defaultHandler) {
+-                    if (level === "warn" && log.code == "CIRCULAR_DEPENDENCY") {
+-                        return;
+-                    }
+-                    if (onLog) {
+-                        onLog(level, log, defaultHandler);
+-                    }
+-                    else {
+-                        defaultHandler(level, log);
+-                    }
+-                },
+                 treeshake: {
+                     moduleSideEffects: "no-external",
+                     propertyReadSideEffects: true,
+diff --git a/dist/rollup-plugin-dts.mjs b/dist/rollup-plugin-dts.mjs
+index f185303864c0df93ec85031163d216d94f27a53b..44ff67a5a6db34b5262f1bb382ec1a10c081196c 100644
+--- a/dist/rollup-plugin-dts.mjs
++++ b/dist/rollup-plugin-dts.mjs
+@@ -1488,20 +1488,9 @@ const transform = () => {
+     const allFileReferences = new Map();
+     return {
+         name: "dts-transform",
+-        options({ onLog, ...options }) {
++        options({ ...options }) {
+             return {
+                 ...options,
+-                onLog(level, log, defaultHandler) {
+-                    if (level === "warn" && log.code == "CIRCULAR_DEPENDENCY") {
+-                        return;
+-                    }
+-                    if (onLog) {
+-                        onLog(level, log, defaultHandler);
+-                    }
+-                    else {
+-                        defaultHandler(level, log);
+-                    }
+-                },
+                 treeshake: {
+                     moduleSideEffects: "no-external",
+                     propertyReadSideEffects: true,
