@@ -56,6 +56,7 @@ export default [
     ],
   },
   // TODO: This doesn't work in dev mode so look into this
+  //
   // {
   //   input: "./dist/dts/index.d.ts",
   //   output: [{ file: "dist/index.d.ts", format: "es" }],
