@@ -5,3 +5,5 @@ export { Tag } from "./components/Tag";
 export { Text } from "./components/Text";
 export { Flex } from "./components/Flex";
 export { Box } from "./components/Box";
+export { Strong } from "./components/Strong";
+export { Em } from "./components/Em";

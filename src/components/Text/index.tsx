@@ -50,6 +50,8 @@ export const Text = React.forwardRef<TextElement, TextProps>(
         ref={forwardedRef}
         className={classNames(css.text, className)}
         style={{ ...styleVariables, ...style }}
+        data-size={size}
+        data-color={color}
       >
         {children}
       </Element>

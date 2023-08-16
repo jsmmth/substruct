@@ -1,0 +1,5 @@
+.strong {
+  font-weight: bold;
+  color: var(--strong-color);
+  background: var(--strong-background-color);
+}

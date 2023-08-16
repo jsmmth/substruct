@@ -118,7 +118,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
         >
           {children}
         </Text>
-        <span className={css.buttonLoadingContainer}>
+        <span className={css.button__loadingContainer}>
           <LoadingSpinner size={size} />
         </span>
       </button>

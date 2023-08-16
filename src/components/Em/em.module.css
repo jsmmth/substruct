@@ -1,0 +1,5 @@
+.em {
+  font-style: italic;
+  color: var(--em-color);
+  background: var(--em-background-color);
+}
