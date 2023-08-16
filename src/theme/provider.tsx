@@ -1,7 +1,7 @@
 import React from "react";
-import { ThemeVariant, Theme } from "Theme";
-import { DeepPartial } from "helpers/types";
-import useThemeAndSetVariables from "hooks/useThemeAndSetVariables";
+import { ThemeVariant, Theme } from "./";
+import { DeepPartial } from "../helpers/types";
+import useThemeAndSetVariables from "../hooks/useThemeAndSetVariables";
 import { ThemeContext } from "./context";
 
 export const ThemeProvider: React.FC<{
