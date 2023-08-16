@@ -48,8 +48,5 @@
     "patchedDependencies": {
       "rollup-plugin-dts@5.3.1": "patches/rollup-plugin-dts@5.3.1.patch"
     }
-  },
-  "dependencies": {
-    "zod": "^3.22.0"
   }
 }

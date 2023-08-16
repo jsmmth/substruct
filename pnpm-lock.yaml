@@ -27,10 +27,6 @@ specifiers:
   rollup-plugin-postcss: ^4.0.2
   typescript: ^5.1.6
   typescript-plugin-css-modules: ^5.0.1
-  zod: ^3.22.0
-
-dependencies:
-  zod: 3.22.0
 
 devDependencies:
   '@rollup/plugin-commonjs': 25.0.3_rollup@3.28.0
@@ -2722,7 +2718,3 @@ packages:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
     dev: true
-
-  /zod/3.22.0:
-    resolution: {integrity: sha512-y5KZY/ssf5n7hCGDGGtcJO/EBJEm5Pa+QQvFBeyMOtnFYOSflalxIFFvdaYevPhePcmcKC4aTbFkCcXN7D0O8Q==}
-    dev: false
