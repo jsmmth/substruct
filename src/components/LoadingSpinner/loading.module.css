@@ -1,0 +1,4 @@
+.loading {
+  stroke: var(--loading-color);
+  transform: scale(var(--loading-scale));
+}

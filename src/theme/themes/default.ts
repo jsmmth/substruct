@@ -5,10 +5,10 @@ const theme: Theme = {
     base: {
       1: {
         light: "#FFFFFF",
-        dark: "#111111",
+        dark: "#000000",
       },
       2: {
-        light: "#FCFCFC",
+        light: "#FFFFFF",
         dark: "#1F1F28",
       },
       3: {
@@ -30,7 +30,7 @@ const theme: Theme = {
     },
     primary: {
       1: {
-        light: "#F0F3FF",
+        light: "#E4EAFF",
         dark: "#2D3D75",
       },
       2: {
@@ -50,8 +50,8 @@ const theme: Theme = {
         dark: "#E0E7FD",
       },
       6: {
-        light: "#223C98",
-        dark: "#E0E7FD",
+        light: "#112468",
+        dark: "#FBFCFE",
       },
     },
     danger: {
@@ -158,8 +158,8 @@ const theme: Theme = {
   borderRadius: {
     unit: "em",
     sizes: {
-      1: 0.1875,
-      2: 0.3125,
+      1: 0.5,
+      2: 0.5,
       3: 0.5,
       4: 99,
       5: 0,
@@ -169,9 +169,9 @@ const theme: Theme = {
   spacing: {
     unit: "px",
     sizes: {
-      1: [6, 8],
-      2: [10, 14],
-      3: [13, 22],
+      1: [8, 8],
+      2: [8, 16],
+      3: [16, 24],
       4: 32,
       5: 40,
       6: 56,

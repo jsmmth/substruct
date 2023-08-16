@@ -5,17 +5,20 @@ import { Text } from "../Text";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 import { InteractiveColor } from "../../theme/colors";
 import { SizeOrResponsiveSize } from "../../theme/sizes";
+import LoadingSpinner from "components/LoadingSpinner";
 
 type ButtonVariant = "solid" | "soft" | "outline";
 
-interface Button extends React.ComponentProps<"button"> {
+interface ButtonProps extends React.ComponentProps<"button"> {
   children: React.ReactNode;
   hasBorder?: boolean;
+  isLoading?: boolean;
   variant?: ButtonVariant;
   color?: InteractiveColor;
   size?: SizeOrResponsiveSize;
   borderRadius?: SizeOrResponsiveSize;
   weight?: React.CSSProperties["fontWeight"];
+  LoadingElement?: React.ReactNode;
 }
 
 const getButtonStylesForVariant = (
@@ -25,11 +28,15 @@ const getButtonStylesForVariant = (
   switch (variant) {
     case "solid":
       return {
-        "--button-background-color": `var(--color-${color}-3)`,
-        "--button-hover-background-color": `var(--color-${color}-4)`,
-        "--button-border-color": `var(--color-${color}-4)`,
+        "--button-background-color": `var(--color-${color}-4)`,
+        "--button-hover-background-color": `var(--color-${color}-3)`,
+        "--button-border-color": `var(--color-${color}-5)`,
         "--button-text-color": `var(--color-base-1)`,
-        "--button-focus-color": `var(--color-${color}-5)`,
+        "--button-focus-outline-color": `var(--color-${color}-5)`,
+        "--button-focus-background-color": `var(--color-${color}-3)`,
+        "--button-active-background-color": `var(--color-${color}-5)`,
+        "--button-disabled-background-color": `var(--color-base-3)`,
+        "--button-disabled-text-color": `var(--color-base-5)`,
       };
     case "soft":
       return {
@@ -50,49 +57,71 @@ const getButtonStylesForVariant = (
   }
 };
 
-export const Button: React.FC<Button> = ({
-  children,
-  className,
-  hasBorder = false,
-  color = "primary",
-  variant = "solid",
-  style,
-  size = 2,
-  borderRadius = undefined,
-  weight = 500,
-}) => {
-  const buttonSize = useSizeForBreakpoint(size);
-  const borderRadiusSize = useSizeForBreakpoint(borderRadius ?? size);
-  const variantStyles = getButtonStylesForVariant(variant, color);
-  const styleVariables = useMemo(
-    () => ({
-      ...variantStyles,
-      "--button-padding": `var(--spacing-${buttonSize})`,
-      "--button-border-radius": `var(--borderRadius-${borderRadiusSize})`,
-      "--button-border":
-        hasBorder || variant === "outline"
-          ? `2px solid ${variantStyles["--button-border-color"]}`
-          : "none",
-    }),
-    [buttonSize, borderRadiusSize, hasBorder, variantStyles],
-  );
+type ButtonElement = React.ElementRef<"button">;
+export const Button = React.forwardRef<ButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      className,
+      hasBorder = false,
+      isLoading = false,
+      color = "primary",
+      variant = "solid",
+      style,
+      size = 2,
+      borderRadius = undefined,
+      weight = 700,
+      disabled,
+      LoadingElement = LoadingSpinner,
+      ...props
+    },
+    forwardedRef,
+  ) => {
+    const buttonSize = useSizeForBreakpoint(size);
+    const borderRadiusSize = useSizeForBreakpoint(borderRadius ?? size);
+    const variantStyles = getButtonStylesForVariant(variant, color);
+    const styleVariables = useMemo(
+      () => ({
+        ...variantStyles,
+        "--button-padding": `var(--spacing-${buttonSize})`,
+        "--button-border-radius": `var(--borderRadius-${borderRadiusSize})`,
+        "--button-border":
+          hasBorder || variant === "outline"
+            ? `2px solid ${
+                disabled
+                  ? `var(--color-base-4)`
+                  : variantStyles["--button-border-color"]
+              }`
+            : "none",
+      }),
+      [buttonSize, borderRadiusSize, hasBorder, variantStyles, disabled],
+    );
 
-  return (
-    <button
-      className={classNames(css.button, className)}
-      style={{
-        ...styleVariables,
-        ...style,
-      }}
-    >
-      <Text
-        as="span"
-        color="inherit"
-        weight={weight}
-        size={buttonSize as SizeOrResponsiveSize}
+    return (
+      <button
+        {...props}
+        disabled={disabled || isLoading}
+        ref={forwardedRef}
+        className={classNames(css.button, className, {
+          [css.isLoading]: isLoading,
+        })}
+        style={{
+          ...styleVariables,
+          ...style,
+        }}
       >
-        {children}
-      </Text>
-    </button>
-  );
-};
+        <Text
+          as="span"
+          color="inherit"
+          weight={weight}
+          size={buttonSize as SizeOrResponsiveSize}
+        >
+          {children}
+        </Text>
+        <span className={css.buttonLoadingContainer}>
+          <LoadingSpinner size={size} />
+        </span>
+      </button>
+    );
+  },
+);
