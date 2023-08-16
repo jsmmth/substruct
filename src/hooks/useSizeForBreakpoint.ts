@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "./useTheme";
 import { useMediaQuery } from "./useMediaQuery";
-import { SizeOrResponsiveSize } from "../Theme/sizes";
+import { SizeOrResponsiveSize } from "../theme/sizes";
 
 const useSizeForBreakpoint = (size: SizeOrResponsiveSize): number => {
   const theme = useTheme();

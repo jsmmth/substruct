@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import css from "./flex.module.css";
-import { Unit } from "../../Theme/sizes";
+import { Unit } from "../../theme/sizes";
 
 interface Flex extends React.ComponentProps<"div"> {
   children?: React.ReactNode;

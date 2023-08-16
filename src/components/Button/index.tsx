@@ -3,8 +3,8 @@ import classNames from "classnames";
 import css from "./button.module.css";
 import { Text } from "../Text";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
-import { InteractiveColor } from "../../Theme/colors";
-import { SizeOrResponsiveSize } from "../../Theme/sizes";
+import { InteractiveColor } from "../../theme/colors";
+import { SizeOrResponsiveSize } from "../../theme/sizes";
 
 type ButtonVariant = "solid" | "soft" | "outline";
 

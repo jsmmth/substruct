@@ -2,9 +2,9 @@ import { useEffect, useMemo } from "react";
 import { useMediaQuery } from "./useMediaQuery";
 import { DeepPartial } from "../helpers/types";
 import { mergeDeep } from "../helpers/objects";
-import { ThemeVariant, themes, Theme } from "../Theme";
-import { BreakpointVariants, SizeSetting, SizeVariants } from "../Theme/sizes";
-import { ColorValue, ColorVariants, colors, Color } from "../Theme/colors";
+import { ThemeVariant, themes, Theme } from "../theme";
+import { BreakpointVariants, SizeSetting, SizeVariants } from "../theme/sizes";
+import { ColorValue, ColorVariants, colors, Color } from "../theme/colors";
 
 const convertSizeToCSSVariable = (
   range: SizeSetting<SizeVariants | BreakpointVariants>,

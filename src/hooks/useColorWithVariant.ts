@@ -6,7 +6,7 @@ import {
   ColorVariant,
   cssColorOptions,
   CSSDefaultColorOption,
-} from "../Theme/colors";
+} from "../theme/colors";
 
 const useColorWithVariant = <C extends Color | InteractiveColor>(
   color: ColorOrColorWithVariant<C>,

@@ -3,8 +3,8 @@ import React from "react";
 import css from "./box.module.css";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
-import { SizeOrResponsiveSize, Unit } from "../../Theme/sizes";
-import { ColorOrColorWithVariant, Color } from "../../Theme/colors";
+import { SizeOrResponsiveSize, Unit } from "../../theme/sizes";
+import { ColorOrColorWithVariant, Color } from "../../theme/colors";
 
 interface Box extends React.ComponentProps<"div"> {
   children?: React.ReactNode;

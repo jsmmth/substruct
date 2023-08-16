@@ -4,8 +4,8 @@ import css from "./text.module.css";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
 import { PropsWithoutRefOrColor } from "../../helpers/types";
-import { ColorOrColorWithVariant, Color } from "../../Theme/colors";
-import { SizeOrResponsiveSize } from "../../Theme/sizes";
+import { ColorOrColorWithVariant, Color } from "../../theme/colors";
+import { SizeOrResponsiveSize } from "../../theme/sizes";
 
 interface TextProps extends PropsWithoutRefOrColor<"p"> {
   children: React.ReactNode;

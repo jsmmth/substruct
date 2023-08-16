@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 import css from "./tag.module.css";
 import { Text } from "../Text";
-import { InteractiveColor } from "../../Theme/colors";
-import { SizeVariant } from "../../Theme/sizes";
+import { InteractiveColor } from "../../theme/colors";
+import { SizeVariant } from "../../theme/sizes";
 
 interface Tag extends React.ComponentProps<"div"> {
   children: React.ReactNode;
