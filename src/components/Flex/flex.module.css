@@ -1,0 +1,12 @@
+.flex {
+  display: var(--flex-display);
+  flex-direction: var(--flex-direction);
+  flex-wrap: var(--flex-wrap);
+  justify-content: var(--flex-justify);
+  align-items: var(--flex-align);
+  gap: var(--flex-gap);
+  max-width: var(--flex-max-width);
+  max-height: var(--flex-max-height);
+  min-width: var(--flex-min-width);
+  min-height: var(--flex-min-height);
+}

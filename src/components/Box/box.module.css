@@ -1,0 +1,11 @@
+.box {
+  max-width: var(--box-max-width);
+  max-height: var(--box-max-height);
+  min-width: var(--box-min-width);
+  min-height: var(--box-min-height);
+  padding: var(--box-padding);
+  margin: var(--box-margin);
+  flex-grow: var(--box-grow);
+  flex-shrink: var(--box-shrink);
+  background: var(--box-background);
+}

@@ -1,0 +1,22 @@
+.tag {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  padding: var(--tag-padding);
+  border-radius: var(--tag-border-radius);
+  color: var(--tag-text-color);
+  background: var(--tag-background-color);
+  border: var(--tag-border);
+}
+
+.tag span {
+  outline: none;
+}
+
+.tag:focus-visible {
+  outline: none;
+  box-shadow:
+    0px 0px 0px 2px var(--color-base-1),
+    0px 0px 0px 4px var(--tag-border-color);
+}

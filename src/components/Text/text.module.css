@@ -2,4 +2,5 @@
   font-weight: var(--text-font-weight);
   font-size: var(--text-font-size);
   color: var(--text-color);
+  background: var(--text-background-color);
 }
