@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "React UI library",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "README.md"
   ],
   "main": "./dist/index.cjs.js",
   "types": "./dist/index.d.ts",
