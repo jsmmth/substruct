@@ -17,6 +17,7 @@ interface BoxProps extends React.ComponentProps<"div"> {
   maxHeight?: number;
   minWidth?: number;
   minHeight?: number;
+  // border?: boolean | ColorOrColorWithVariant<Color>; TODO
   unit?: Unit;
   grow?: 0 | 1;
   shrink?: 0 | 1;
