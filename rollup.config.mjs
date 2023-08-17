@@ -40,10 +40,7 @@ export default [
         plugins: [postcssPresetEnv(), autoprefixer()],
         modules: {
           // @ts-ignore
-          generateScopedName: (name, _, _) => {
-            // var i = css.indexOf("." + name);
-            // var line = css.substr(0, i).split(/[\r\n]/).length;
-            // var file = path.basename(filename, ".module.css");
+          generateScopedName: (name) => {
             return "sbstrut-ui_" + name;
           },
         },
