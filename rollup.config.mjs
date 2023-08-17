@@ -40,11 +40,11 @@ export default [
         plugins: [postcssPresetEnv(), autoprefixer()],
         modules: {
           // @ts-ignore
-          generateScopedName: (name, _, css) => {
+          generateScopedName: (name, _, _) => {
             // var i = css.indexOf("." + name);
             // var line = css.substr(0, i).split(/[\r\n]/).length;
             // var file = path.basename(filename, ".module.css");
-            return "react-ui_" + name;
+            return "sbstrut-ui_" + name;
           },
         },
         extract: "css/styles.css",
