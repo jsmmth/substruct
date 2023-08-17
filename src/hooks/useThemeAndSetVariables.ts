@@ -3,7 +3,12 @@ import { useMediaQuery } from "./useMediaQuery";
 import { DeepPartial } from "../helpers/types";
 import { mergeDeep } from "../helpers/objects";
 import { ThemeVariant, themes, Theme } from "../theme";
-import { BreakpointVariants, SizeSetting, SizeVariants } from "../theme/sizes";
+import {
+  BreakpointVariants,
+  SizeSetting,
+  SizeVariants,
+  sizeTypes,
+} from "../theme/sizes";
 import { ColorValue, ColorVariants, colors, Color } from "../theme/colors";
 
 const convertSizeToCSSVariable = (
@@ -50,14 +55,7 @@ const useThemeAndSetVariables = (
 
   // useEffect on load because sizes do not change after load
   useEffect(() => {
-    const sizeSettings = [
-      "body",
-      "heading",
-      "borderRadius",
-      "spacing",
-      "breakpoints",
-    ] as const;
-    const sizeVariables = sizeSettings.map((setting) => {
+    const sizeVariables = sizeTypes.map((setting) => {
       return convertSizeToCSSVariable(themeConfig[setting], setting);
     });
 

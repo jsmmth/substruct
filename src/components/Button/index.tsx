@@ -77,14 +77,18 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
     },
     forwardedRef,
   ) => {
-    const buttonSize = useSizeForBreakpoint(size);
-    const borderRadiusSize = useSizeForBreakpoint(borderRadius ?? size);
+    const { variable: buttonSize, variant: buttonSizeVariant } =
+      useSizeForBreakpoint(size, "spacing");
+    const { variable: borderRadiusSize } = useSizeForBreakpoint(
+      borderRadius ?? size,
+      "borderRadius",
+    );
     const variantStyles = getButtonStylesForVariant(variant, color);
     const styleVariables = useMemo(
       () => ({
         ...variantStyles,
-        "--button-padding": `var(--spacing-${buttonSize})`,
-        "--button-border-radius": `var(--borderRadius-${borderRadiusSize})`,
+        "--button-padding": buttonSize,
+        "--button-border-radius": borderRadiusSize,
         "--button-border":
           hasBorder || variant === "outline"
             ? `2px solid ${
@@ -114,7 +118,7 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
           as="span"
           color="inherit"
           weight={weight}
-          size={buttonSize as SizeOrResponsiveSize}
+          size={buttonSizeVariant as SizeOrResponsiveSize}
         >
           {children}
         </Text>

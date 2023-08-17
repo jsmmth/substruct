@@ -7,3 +7,4 @@ export { Flex } from "./components/Flex";
 export { Box } from "./components/Box";
 export { Strong } from "./components/Strong";
 export { Em } from "./components/Em";
+export { Blockquote } from "./components/Blockquote";

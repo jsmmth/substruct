@@ -22,9 +22,19 @@ export type ResponsiveSize = {
   initial: SizeVariant;
   options: Partial<BreakpointVariants>;
 };
-export type SizeOrResponsiveSize = SizeVariant | ResponsiveSize;
+export type SizeOrResponsiveSize = 0 | SizeVariant | ResponsiveSize;
 export type Unit = "px" | "rem" | "em" | "vh" | "vw";
 export type SizeSetting<S extends SizeVariants | BreakpointVariants> = {
   unit: Unit;
   sizes: S;
 };
+
+export const sizeTypes = [
+  "body",
+  "heading",
+  "borderRadius",
+  "spacing",
+  "breakpoints",
+] as const;
+
+export type SizeType = (typeof sizeTypes)[number];

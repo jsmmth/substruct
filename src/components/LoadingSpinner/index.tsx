@@ -20,9 +20,9 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   style,
 }) => {
   const theme = useTheme();
-  const loadingSize = useSizeForBreakpoint(size);
+  const { variant: sizeVariant } = useSizeForBreakpoint(size, "body");
   const loadingColor = useColorWithVariant(color, 5);
-  const viewBoxSize = theme.body.sizes[loadingSize as SizeVariant] as number;
+  const viewBoxSize = theme.body.sizes[sizeVariant as SizeVariant] as number;
   const styleVariables = {
     "--loading-scale": `${viewBoxSize / 24}`,
     "--loading-color": loadingColor,
@@ -44,8 +44,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           cy="12"
           r="9.5"
           fill="none"
-          stroke-width="3"
-          stroke-linecap="round"
+          strokeWidth="3"
+          strokeLinecap="round"
         >
           <animate
             attributeName="stroke-dasharray"

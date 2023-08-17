@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import React from "react";
+import React, { forwardRef } from "react";
 import css from "./flex.module.css";
 import { Unit } from "../../theme/sizes";
 
-interface Flex extends React.ComponentProps<"div"> {
+interface FlexProps extends React.ComponentProps<"div"> {
   children?: React.ReactNode;
   display?: "flex" | "inline-flex";
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
@@ -24,44 +24,54 @@ interface Flex extends React.ComponentProps<"div"> {
   unit?: Unit;
 }
 
-export const Flex: React.FC<Flex> = ({
-  display = "flex",
-  direction = "row",
-  wrap = "nowrap",
-  justify = "flex-start",
-  align = "flex-start",
-  maxWidth,
-  maxHeight,
-  minWidth,
-  minHeight,
-  unit = "px",
-  gap = 0,
-  style,
-  children,
-  className,
-}) => {
-  const styleVariables = {
-    "--flex-display": display,
-    "--flex-direction": direction,
-    "--flex-wrap": wrap,
-    "--flex-justify": justify,
-    "--flex-align": align,
-    "--flex-gap": `${gap}${unit}`,
-    "--flex-max-width": maxWidth ? `${maxWidth}${unit}` : "none",
-    "--flex-max-height": maxHeight ? `${maxHeight}${unit}` : "none",
-    "--flex-min-width": minWidth ? `${minWidth}${unit}` : "none",
-    "--flex-min-height": minHeight ? `${minHeight}${unit}` : "none",
-  } as React.CSSProperties;
+type FlexElement = React.ElementRef<"div">;
 
-  return (
-    <div
-      className={classNames(css.flex, className)}
-      style={{
-        ...styleVariables,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+export const Flex = React.forwardRef<FlexElement, FlexProps>(
+  (
+    {
+      display = "flex",
+      direction = "row",
+      wrap = "nowrap",
+      justify = "flex-start",
+      align = "flex-start",
+      maxWidth,
+      maxHeight,
+      minWidth,
+      minHeight,
+      unit = "px",
+      gap = 0,
+      style,
+      children,
+      className,
+      ...props
+    },
+    forwardedRef,
+  ) => {
+    const styleVariables = {
+      "--flex-display": display,
+      "--flex-direction": direction,
+      "--flex-wrap": wrap,
+      "--flex-justify": justify,
+      "--flex-align": align,
+      "--flex-gap": `${gap}${unit}`,
+      "--flex-max-width": maxWidth ? `${maxWidth}${unit}` : "none",
+      "--flex-max-height": maxHeight ? `${maxHeight}${unit}` : "none",
+      "--flex-min-width": minWidth ? `${minWidth}${unit}` : "none",
+      "--flex-min-height": minHeight ? `${minHeight}${unit}` : "none",
+    } as React.CSSProperties;
+
+    return (
+      <div
+        ref={forwardedRef}
+        className={classNames(css.flex, className)}
+        style={{
+          ...styleVariables,
+          ...style,
+        }}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
+);

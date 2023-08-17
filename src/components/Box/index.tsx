@@ -6,7 +6,7 @@ import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 import { SizeOrResponsiveSize, Unit } from "../../theme/sizes";
 import { ColorOrColorWithVariant, Color } from "../../theme/colors";
 
-interface Box extends React.ComponentProps<"div"> {
+interface BoxProps extends React.ComponentProps<"div"> {
   children?: React.ReactNode;
   as?: "article" | "aside" | "div" | "footer" | "header" | "main" | "section";
   padding?: 0 | SizeOrResponsiveSize;
@@ -22,7 +22,7 @@ interface Box extends React.ComponentProps<"div"> {
   shrink?: 0 | 1;
 }
 
-export const Box: React.FC<Box> = ({
+export const Box: React.FC<BoxProps> = ({
   as = "div",
   padding = 0,
   margin = 0,
@@ -41,20 +41,21 @@ export const Box: React.FC<Box> = ({
 }) => {
   const Element = as;
   const backgroundColor = useColorWithVariant(background, 1);
-  const paddingSize = padding === 0 ? 0 : useSizeForBreakpoint(padding);
-  const marginSize = margin === 0 ? 0 : useSizeForBreakpoint(margin);
-  const borderRadiusSize =
-    borderRadius === 0 ? 0 : useSizeForBreakpoint(borderRadius);
+  const { variable: paddingSize } = useSizeForBreakpoint(padding, "spacing");
+  const { variable: marginSize } = useSizeForBreakpoint(margin, "spacing");
+  const { variable: borderRadiusSize } = useSizeForBreakpoint(
+    borderRadius,
+    "borderRadius",
+  );
   const styleVariables = {
     "--box-max-width": maxWidth ? `${maxWidth}${unit}` : "none",
     "--box-max-height": maxHeight ? `${maxHeight}${unit}` : "none",
     "--box-min-width": minWidth ? `${minWidth}${unit}` : "none",
     "--box-min-height": minHeight ? `${minHeight}${unit}` : "none",
     "--box-background": backgroundColor,
-    "--box-padding": paddingSize == 0 ? 0 : `var(--spacing-${paddingSize})`,
-    "--box-margin": marginSize == 0 ? 0 : `var(--spacing-${marginSize})`,
-    "---box-border-radius":
-      borderRadiusSize == 0 ? 0 : `var(--borderRadius-${borderRadiusSize})`,
+    "--box-padding": paddingSize,
+    "--box-margin": marginSize,
+    "---box-border-radius": borderRadiusSize,
     "--box-grow": grow,
     "--box-shrink": shrink,
   } as React.CSSProperties;

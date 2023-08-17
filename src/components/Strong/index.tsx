@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
-import { PropsWithoutRefOrColor } from "helpers/types";
-import { ColorOrColorWithVariant, Color } from "theme/colors";
+import { PropsWithoutRefOrColor } from "../../helpers/types";
+import { ColorOrColorWithVariant, Color } from "../../theme/colors";
 import css from "./strong.module.css";
-import useColorWithVariant from "hooks/useColorWithVariant";
+import useColorWithVariant from "../../hooks/useColorWithVariant";
 
 interface StrongProps extends PropsWithoutRefOrColor<"strong"> {
   children: React.ReactNode;

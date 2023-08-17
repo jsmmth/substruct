@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "./useTheme";
 import { useMediaQuery } from "./useMediaQuery";
-import { SizeOrResponsiveSize } from "../theme/sizes";
+import { SizeOrResponsiveSize, SizeType } from "../theme/sizes";
 
-const useSizeForBreakpoint = (size: SizeOrResponsiveSize): number => {
+const useSizeForBreakpoint = (
+  size: SizeOrResponsiveSize,
+  type: SizeType,
+): { variant: number; variable: string } => {
   const theme = useTheme();
   const isSizeNumber = typeof size === "number";
 
-  if (isSizeNumber) {
-    return size;
+  if (isSizeNumber && size > 0) {
+    return { variant: size, variable: `var(--${type}-${size})` };
+  } else if (isSizeNumber) {
+    return { variant: 0, variable: `0` };
   }
 
-  const [sizeValue, setSize] = useState<number>(
-    isSizeNumber ? size : size.initial,
-  );
+  const [sizeValue, setSize] = useState<number>(size.initial);
 
   const isExtraSmall = useMediaQuery(
     `(max-width: ${theme.breakpoints.sizes.sm}${theme.breakpoints.unit})`,
@@ -55,7 +58,7 @@ const useSizeForBreakpoint = (size: SizeOrResponsiveSize): number => {
     return setSize(size.initial);
   }, [isExtraSmall, isSmall, isMedium, isLarge, isExtraLarge]);
 
-  return sizeValue;
+  return { variant: sizeValue, variable: `var(--${type}-${sizeValue})` };
 };
 
 export default useSizeForBreakpoint;

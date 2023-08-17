@@ -5,7 +5,7 @@ import { Text } from "../Text";
 import { InteractiveColor } from "../../theme/colors";
 import { SizeVariant } from "../../theme/sizes";
 
-interface Tag extends React.ComponentProps<"div"> {
+interface TagProps extends React.ComponentProps<"div"> {
   children: React.ReactNode;
   hasBorder?: boolean;
   color?: InteractiveColor;
@@ -39,39 +39,49 @@ const colorShade = (col: string, amt: number) => {
   return `#${rr}${gg}${bb}`;
 };
 
-export const Tag: React.FC<Tag> = ({
-  children,
-  className,
-  hasBorder = false,
-  color = "primary",
-  customColor = undefined,
-  customColorShade = 150,
-  style,
-  size = 1,
-  weight = 500,
-}) => {
-  const styleVariables = {
-    "--tag-background-color": customColor
-      ? `${colorShade(customColor, customColorShade)}`
-      : `var(--color-${color}-1)`,
-    "--tag-border-color": customColor ? customColor : `var(--color-${color}-3)`,
-    "--tag-text-color": customColor ? customColor : `var(--color-${color}-3)`,
-    "--tag-padding": `var(--spacing-${size})`,
-    "--tag-border-radius": `var(--borderRadius-${size})`,
-    "--tag-border": hasBorder ? `2px solid var(--color-${color}-3)` : "none",
-  } as React.CSSProperties;
+type TagElement = React.ElementRef<"div">;
 
-  return (
-    <div
-      className={classNames(css.tag, className)}
-      style={{
-        ...styleVariables,
-        ...style,
-      }}
-    >
-      <Text as="span" color="inherit" weight={weight} size={size}>
-        {children}
-      </Text>
-    </div>
-  );
-};
+export const Tag = React.forwardRef<TagElement, TagProps>(
+  (
+    {
+      children,
+      className,
+      hasBorder = false,
+      color = "primary",
+      customColor = undefined,
+      customColorShade = 150,
+      style,
+      size = 1,
+      weight = 500,
+    },
+    forwardedRef,
+  ) => {
+    const styleVariables = {
+      "--tag-background-color": customColor
+        ? `${colorShade(customColor, customColorShade)}`
+        : `var(--color-${color}-1)`,
+      "--tag-border-color": customColor
+        ? customColor
+        : `var(--color-${color}-3)`,
+      "--tag-text-color": customColor ? customColor : `var(--color-${color}-3)`,
+      "--tag-padding": `var(--spacing-${size})`,
+      "--tag-border-radius": `var(--borderRadius-${size})`,
+      "--tag-border": hasBorder ? `2px solid var(--color-${color}-3)` : "none",
+    } as React.CSSProperties;
+
+    return (
+      <div
+        ref={forwardedRef}
+        className={classNames(css.tag, className)}
+        style={{
+          ...styleVariables,
+          ...style,
+        }}
+      >
+        <Text as="span" color="inherit" weight={weight} size={size}>
+          {children}
+        </Text>
+      </div>
+    );
+  },
+);

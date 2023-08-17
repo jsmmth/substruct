@@ -35,11 +35,11 @@ export const Text = React.forwardRef<TextElement, TextProps>(
     forwardedRef,
   ) => {
     const Element: any = as;
-    const textSize = useSizeForBreakpoint(size);
+    const { variable: textSize } = useSizeForBreakpoint(size, "body");
     const textColor = useColorWithVariant(color);
     const bgColor = useColorWithVariant(background, 1);
     const styleVariables = {
-      "--text-font-size": `var(--body-${textSize})`,
+      "--text-font-size": textSize,
       "--text-font-weight": weight,
       "--text-color": textColor,
       "--text-background-color": bgColor,
