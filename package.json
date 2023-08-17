@@ -15,6 +15,7 @@
     "build": "rollup -c",
     "lint": "tsc"
   },
+  "repository": "https://github.com/jsmmth/substruct-ui",
   "keywords": [
     "react",
     "ui",
