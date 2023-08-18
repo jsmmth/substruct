@@ -8,7 +8,6 @@ import { SizeOrResponsiveSize } from "../../theme/sizes";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 
 interface BlockquoteProps extends PropsWithoutRefOrColor<"blockquote"> {
-  children: React.ReactNode;
   color?: ColorOrColorWithVariant<Color>;
   borderRadius?: SizeOrResponsiveSize;
 }

@@ -7,7 +7,6 @@ import { SizeOrResponsiveSize, Unit } from "../../theme/sizes";
 import { ColorOrColorWithVariant, Color } from "../../theme/colors";
 
 interface BoxProps extends React.ComponentProps<"div"> {
-  children?: React.ReactNode;
   as?: "article" | "aside" | "div" | "footer" | "header" | "main" | "section";
   padding?: 0 | SizeOrResponsiveSize;
   margin?: 0 | SizeOrResponsiveSize;

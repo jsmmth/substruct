@@ -155,6 +155,17 @@ const theme: Theme = {
       6: 32,
     },
   },
+  caption: {
+    unit: "px",
+    sizes: {
+      1: 10,
+      2: 11,
+      3: 13,
+      4: 15,
+      5: 17,
+      6: 24,
+    },
+  },
   borderRadius: {
     unit: "em",
     sizes: {
@@ -170,7 +181,7 @@ const theme: Theme = {
     unit: "px",
     sizes: {
       1: [8, 8],
-      2: [8, 16],
+      2: [12, 12],
       3: [16, 24],
       4: 32,
       5: 40,

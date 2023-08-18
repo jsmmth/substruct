@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   background-color: var(--color-base-1);
+  color: var(--color-base-6);
 }
 
 body,
@@ -20,4 +21,13 @@ textarea {
 
 .btn span {
   color: red;
+}
+
+pre {
+  padding: 16px 24px;
+  background-color: var(--color-base-2);
+  border-radius: 8px;
+  border: 1px solid var(--color-base-3);
+  font-size: var(--body-3);
+  color: var(--color-base-6);
 }

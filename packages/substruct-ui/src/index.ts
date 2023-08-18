@@ -8,3 +8,5 @@ export { Box } from "./components/Box";
 export { Strong } from "./components/Strong";
 export { Em } from "./components/Em";
 export { Blockquote } from "./components/Blockquote";
+export { Caption } from "./components/Caption";
+export { Heading } from "./components/Heading";

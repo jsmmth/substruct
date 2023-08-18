@@ -2,16 +2,19 @@ import React from "react";
 import classNames from "classnames";
 import { PropsWithoutRefOrColor } from "../../helpers/types";
 import { ColorOrColorWithVariant, Color } from "../../theme/colors";
-import css from "./strong.module.css";
+import css from "./caption.module.css";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
+import { SizeOrResponsiveSize } from "theme/sizes";
+import useSizeForBreakpoint from "hooks/useSizeForBreakpoint";
 
-interface StrongProps extends PropsWithoutRefOrColor<"strong"> {
+interface CaptionProps extends PropsWithoutRefOrColor<"h6"> {
   color?: ColorOrColorWithVariant<Color>;
   background?: ColorOrColorWithVariant<Color>;
+  size?: SizeOrResponsiveSize;
 }
 
-type StrongElement = React.ElementRef<"strong">;
-export const Strong = React.forwardRef<StrongElement, StrongProps>(
+type CaptionElement = React.ElementRef<"h6">;
+export const Caption = React.forwardRef<CaptionElement, CaptionProps>(
   (
     {
       children,
@@ -19,26 +22,29 @@ export const Strong = React.forwardRef<StrongElement, StrongProps>(
       background = "none",
       className,
       style,
+      size = 2,
       ...props
     },
     forwardedRef,
   ) => {
+    const { variable: textSize } = useSizeForBreakpoint(size, "caption");
     const textColor = useColorWithVariant(color);
     const bgColor = useColorWithVariant(background, 1);
     const styleVariables = {
-      "--strong-color": textColor,
-      "--strong-background-color": bgColor,
+      "--caption-size": textSize,
+      "--caption-color": textColor,
+      "--caption-background-color": bgColor,
     } as React.CSSProperties;
 
     return (
-      <strong
+      <h6
         ref={forwardedRef}
-        className={classNames(css.strong, className)}
+        className={classNames(css.caption, className)}
         style={{ ...styleVariables, ...style }}
         {...props}
       >
         {children}
-      </strong>
+      </h6>
     );
   },
 );

@@ -32,6 +32,7 @@ export type SizeSetting<S extends SizeVariants | BreakpointVariants> = {
 export const sizeTypes = [
   "body",
   "heading",
+  "caption",
   "borderRadius",
   "spacing",
   "breakpoints",

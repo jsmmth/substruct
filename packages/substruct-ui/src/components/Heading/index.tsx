@@ -1,40 +1,54 @@
 import React from "react";
 import classNames from "classnames";
-import css from "./text.module.css";
+import css from "./heading.module.css";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
 import { PropsWithoutRefOrColor } from "../../helpers/types";
 import { ColorOrColorWithVariant, Color } from "../../theme/colors";
 import { SizeOrResponsiveSize } from "../../theme/sizes";
 
-interface TextProps extends PropsWithoutRefOrColor<"p"> {
+interface HeadingProps extends PropsWithoutRefOrColor<"h1"> {
   color?: ColorOrColorWithVariant<Color>;
   background?: ColorOrColorWithVariant<Color>;
-  as?: "p" | "span" | "div";
   size?: SizeOrResponsiveSize;
   weight?: React.CSSProperties["fontWeight"];
 }
 
-type TextElement =
-  | React.ElementRef<"p">
-  | React.ElementRef<"span">
-  | React.ElementRef<"div">;
-export const Text = React.forwardRef<TextElement, TextProps>(
+type HeadingElement =
+  | React.ElementRef<"h1">
+  | React.ElementRef<"h2">
+  | React.ElementRef<"h3">
+  | React.ElementRef<"h4">
+  | React.ElementRef<"h5">
+  | React.ElementRef<"h6">;
+
+export const Heading = React.forwardRef<HeadingElement, HeadingProps>(
   (
     {
       children,
       className,
-      as = "p",
       color = "base",
       background = "none",
-      size = 2,
-      weight = "normal",
+      size = 6,
+      weight = "bold",
       style,
     },
     forwardedRef,
   ) => {
-    const Element: any = as;
-    const { variable: textSize } = useSizeForBreakpoint(size, "body");
+    const sizeToHeadingSize: { [key: number]: number } = {
+      1: 6,
+      2: 5,
+      3: 4,
+      4: 3,
+      5: 2,
+      6: 1,
+    };
+
+    const { variable: textSize, variant: headingSize } = useSizeForBreakpoint(
+      size,
+      "heading",
+    );
+    const Element: any = `h${sizeToHeadingSize[headingSize]}`;
     const textColor = useColorWithVariant(color);
     const bgColor = useColorWithVariant(background, 1);
     const styleVariables = {
@@ -47,7 +61,7 @@ export const Text = React.forwardRef<TextElement, TextProps>(
     return (
       <Element
         ref={forwardedRef}
-        className={classNames(css.text, className)}
+        className={classNames(css.heading, className)}
         style={{ ...styleVariables, ...style }}
         data-size={size}
         data-color={color}

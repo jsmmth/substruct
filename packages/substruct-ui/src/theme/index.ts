@@ -13,6 +13,7 @@ export type Theme = {
   colors: Colors;
   body: SizeSetting<SizeVariants>;
   heading: SizeSetting<SizeVariants>;
+  caption: SizeSetting<SizeVariants>;
   borderRadius: SizeSetting<SizeVariants>;
   spacing: SizeSetting<SizeVariants>;
   breakpoints: SizeSetting<BreakpointVariants>;

@@ -6,7 +6,6 @@ import css from "./em.module.css";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
 
 interface EmProps extends PropsWithoutRefOrColor<"em"> {
-  children: React.ReactNode;
   color?: ColorOrColorWithVariant<Color>;
   background?: ColorOrColorWithVariant<Color>;
 }

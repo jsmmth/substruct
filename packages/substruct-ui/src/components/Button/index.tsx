@@ -10,7 +10,6 @@ import LoadingSpinner from "components/LoadingSpinner";
 type ButtonVariant = "solid" | "soft" | "outline";
 
 interface ButtonProps extends React.ComponentProps<"button"> {
-  children: React.ReactNode;
   hasBorder?: boolean;
   isLoading?: boolean;
   variant?: ButtonVariant;

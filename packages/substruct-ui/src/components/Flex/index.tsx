@@ -4,7 +4,6 @@ import css from "./flex.module.css";
 import { Unit } from "../../theme/sizes";
 
 interface FlexProps extends React.ComponentProps<"div"> {
-  children?: React.ReactNode;
   display?: "flex" | "inline-flex";
   direction?: "row" | "row-reverse" | "column" | "column-reverse";
   wrap?: "nowrap" | "wrap" | "wrap-reverse";

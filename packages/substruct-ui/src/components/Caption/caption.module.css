@@ -1,0 +1,7 @@
+.caption {
+  font-size: var(--caption-size);
+  color: var(--caption-color);
+  background: var(--caption-background-color);
+  font-weight: bold;
+  margin: 0px;
+}

@@ -6,7 +6,6 @@ import { InteractiveColor } from "../../theme/colors";
 import { SizeVariant } from "../../theme/sizes";
 
 interface TagProps extends React.ComponentProps<"div"> {
-  children: React.ReactNode;
   hasBorder?: boolean;
   color?: InteractiveColor;
   customColor?: string;
