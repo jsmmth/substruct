@@ -1,0 +1,23 @@
+html,
+body {
+  margin: 0;
+  background-color: var(--color-base-1);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Inter", sans-serif;
+  color: var(--color-base-6);
+}
+
+/* Extended button */
+.btn {
+  background-color: var(--color-primary-6);
+}
+
+.btn span {
+  color: red;
+}

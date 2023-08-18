@@ -1,3 +1,3 @@
-# Substruct-UI
+# Substruct Monorepo
 
 WIP
