@@ -8,14 +8,18 @@ export const ThemeProvider: React.FC<{
   children: React.ReactNode;
   theme?: ThemeVariant | Theme;
   options?: DeepPartial<Theme>;
-  isDarkModeForced?: Boolean;
+  forcedColorPreference?: "light" | "dark";
 }> = ({
   children,
   theme = "default",
   options = {},
-  isDarkModeForced = false,
+  forcedColorPreference = undefined,
 }) => {
-  const themeConfig = useThemeAndSetVariables(theme, options, isDarkModeForced);
+  const themeConfig = useThemeAndSetVariables(
+    theme,
+    options,
+    forcedColorPreference,
+  );
   return (
     <ThemeContext.Provider value={themeConfig}>
       {children}

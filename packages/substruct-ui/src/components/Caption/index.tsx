@@ -41,6 +41,8 @@ export const Caption = React.forwardRef<CaptionElement, CaptionProps>(
         ref={forwardedRef}
         className={classNames(css.caption, className)}
         style={{ ...styleVariables, ...style }}
+        data-size={size}
+        data-color={color}
         {...props}
       >
         {children}

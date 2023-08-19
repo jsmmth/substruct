@@ -1,7 +1,14 @@
 import classNames from "classnames";
-import React, { forwardRef } from "react";
+import React from "react";
 import css from "./flex.module.css";
 import { Unit } from "../../theme/sizes";
+import {
+  BorderWithBorderColor,
+  ColorOrColorWithVariant,
+  Color,
+} from "../../theme/colors";
+import useColorWithVariant from "hooks/useColorWithVariant";
+import { useBorderForElemment } from "hooks/useBorderForElement";
 
 interface FlexProps extends React.ComponentProps<"div"> {
   display?: "flex" | "inline-flex";
@@ -21,6 +28,8 @@ interface FlexProps extends React.ComponentProps<"div"> {
   minWidth?: number;
   minHeight?: number;
   unit?: Unit;
+  border?: BorderWithBorderColor;
+  background?: ColorOrColorWithVariant<Color>;
 }
 
 type FlexElement = React.ElementRef<"div">;
@@ -42,10 +51,14 @@ export const Flex = React.forwardRef<FlexElement, FlexProps>(
       style,
       children,
       className,
+      border = false,
+      background = "none",
       ...props
     },
     forwardedRef,
   ) => {
+    const backgroundColor = useColorWithVariant(background, 1);
+    const borderVariables = useBorderForElemment("flex", border, background);
     const styleVariables = {
       "--flex-display": display,
       "--flex-direction": direction,
@@ -57,6 +70,8 @@ export const Flex = React.forwardRef<FlexElement, FlexProps>(
       "--flex-max-height": maxHeight ? `${maxHeight}${unit}` : "none",
       "--flex-min-width": minWidth ? `${minWidth}${unit}` : "none",
       "--flex-min-height": minHeight ? `${minHeight}${unit}` : "none",
+      "--flex-background-color": backgroundColor,
+      ...borderVariables,
     } as React.CSSProperties;
 
     return (

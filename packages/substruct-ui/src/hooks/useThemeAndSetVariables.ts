@@ -43,7 +43,7 @@ function convertColorToCSSVariable(color: Color, variants: ColorVariants) {
 const useThemeAndSetVariables = (
   theme: ThemeVariant | Theme,
   options?: DeepPartial<Theme>,
-  isDarkModeForced?: Boolean,
+  forcedColorPreference?: "light" | "dark",
 ): Theme => {
   const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const themeConfig = useMemo<Theme>(() => {
@@ -78,13 +78,16 @@ const useThemeAndSetVariables = (
       ...colorVariables,
     );
     Object.entries(colorVariablesObject).forEach(([key, value]) => {
-      if (isDarkModeForced || isDarkMode) {
+      if (
+        (forcedColorPreference == "dark" || isDarkMode) &&
+        forcedColorPreference != "light"
+      ) {
         document.documentElement.style.setProperty(key, String(value.dark));
         return;
       }
       document.documentElement.style.setProperty(key, String(value.light));
     });
-  }, [themeConfig, isDarkMode, isDarkModeForced]);
+  }, [themeConfig, isDarkMode, forcedColorPreference]);
 
   // Return the theme config
   return themeConfig;

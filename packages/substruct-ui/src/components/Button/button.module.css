@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
   cursor: pointer;
   outline: none;
   transition: all 0.2s ease-in-out;
@@ -11,6 +10,10 @@
   color: var(--button-text-color);
   background: var(--button-background-color);
   border: var(--button-border);
+  border-left: var(--button-border-left);
+  border-right: var(--button-border-right);
+  border-top: var(--button-border-top);
+  border-bottom: var(--button-border-bottom);
   overflow: hidden;
   position: relative;
 }

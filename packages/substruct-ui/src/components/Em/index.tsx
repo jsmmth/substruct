@@ -35,6 +35,7 @@ export const Em = React.forwardRef<EmElement, EmProps>(
         ref={forwardedRef}
         className={classNames(css.em, className)}
         style={{ ...styleVariables, ...style }}
+        data-color={color}
         {...props}
       >
         {children}

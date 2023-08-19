@@ -30,6 +30,7 @@ export const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>(
       borderRadius,
       "borderRadius",
     );
+
     const styleVariables = {
       "--blockquote-color": quoteColor,
       "--blockquote-border-radius": quoteBorderRadius,
@@ -40,6 +41,7 @@ export const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>(
         ref={forwardedRef}
         className={classNames(css.blockquote, className)}
         style={{ ...styleVariables, ...style }}
+        data-color={color}
         {...props}
       >
         {children}

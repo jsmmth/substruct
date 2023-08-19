@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Flex, Box } from "substruct-ui";
+import { Flex } from "substruct-ui";
 import Sidebar from "../components/Sidebar";
 
 function Docs() {

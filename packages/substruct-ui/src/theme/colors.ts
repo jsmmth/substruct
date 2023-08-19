@@ -1,3 +1,5 @@
+import { Unit } from "./sizes";
+
 export type ColorValue =
   | string
   | {
@@ -36,3 +38,15 @@ export type ColorOrColorWithVariant<C extends Color | InteractiveColor> =
   | C
   | CSSDefaultColorOption
   | ColorWithVariant;
+
+export type BorderOptions = {
+  width?: number;
+  unit?: Unit;
+  type?: "solid" | "dashed" | "dotted" | "inset" | "outset";
+};
+
+export type CustomBorderWithOptionalColor = {
+  color?: ColorOrColorWithVariant<Color>;
+  options: BorderOptions | { [key: string]: BorderOptions };
+};
+export type BorderWithBorderColor = boolean | CustomBorderWithOptionalColor;

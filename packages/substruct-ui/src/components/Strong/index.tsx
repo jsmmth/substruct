@@ -35,6 +35,7 @@ export const Strong = React.forwardRef<StrongElement, StrongProps>(
         ref={forwardedRef}
         className={classNames(css.strong, className)}
         style={{ ...styleVariables, ...style }}
+        data-color={color}
         {...props}
       >
         {children}

@@ -4,7 +4,6 @@ import App from "./routes/App.tsx";
 import Docs from "./routes/Docs.tsx";
 import DocsPage from "./routes/DocsPage.tsx";
 import NotFound from "./routes/NotFound.tsx";
-import Header from "./components/Header.tsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "substruct-ui";
 import "substruct-ui/dist/css/styles.css";

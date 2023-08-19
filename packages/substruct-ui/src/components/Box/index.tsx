@@ -4,7 +4,13 @@ import css from "./box.module.css";
 import useColorWithVariant from "../../hooks/useColorWithVariant";
 import useSizeForBreakpoint from "../../hooks/useSizeForBreakpoint";
 import { SizeOrResponsiveSize, Unit } from "../../theme/sizes";
-import { ColorOrColorWithVariant, Color } from "../../theme/colors";
+import {
+  ColorOrColorWithVariant,
+  Color,
+  BorderWithBorderColor,
+  CustomBorderWithOptionalColor,
+} from "../../theme/colors";
+import { useBorderForElemment } from "../../hooks/useBorderForElement";
 
 interface BoxProps extends React.ComponentProps<"div"> {
   as?: "article" | "aside" | "div" | "footer" | "header" | "main" | "section";
@@ -16,7 +22,7 @@ interface BoxProps extends React.ComponentProps<"div"> {
   maxHeight?: number;
   minWidth?: number;
   minHeight?: number;
-  // border?: boolean | ColorOrColorWithVariant<Color>; TODO
+  border?: BorderWithBorderColor;
   unit?: Unit;
   grow?: 0 | 1;
   shrink?: 0 | 1;
@@ -29,7 +35,8 @@ export const Box: React.FC<BoxProps> = ({
   grow = 0,
   shrink = 0,
   borderRadius = 0,
-  background = "none",
+  background = "base",
+  border = false,
   maxWidth,
   maxHeight,
   minWidth,
@@ -41,6 +48,7 @@ export const Box: React.FC<BoxProps> = ({
 }) => {
   const Element = as;
   const backgroundColor = useColorWithVariant(background, 1);
+  const borderStyleVariables = useBorderForElemment("box", border, background);
   const { variable: paddingSize } = useSizeForBreakpoint(padding, "spacing");
   const { variable: marginSize } = useSizeForBreakpoint(margin, "spacing");
   const { variable: borderRadiusSize } = useSizeForBreakpoint(
@@ -55,9 +63,10 @@ export const Box: React.FC<BoxProps> = ({
     "--box-background": backgroundColor,
     "--box-padding": paddingSize,
     "--box-margin": marginSize,
-    "---box-border-radius": borderRadiusSize,
+    "--box-border-radius": borderRadiusSize,
     "--box-grow": grow,
     "--box-shrink": shrink,
+    ...borderStyleVariables,
   } as React.CSSProperties;
 
   return (

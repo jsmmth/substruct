@@ -8,4 +8,10 @@
   flex-grow: var(--box-grow);
   flex-shrink: var(--box-shrink);
   background: var(--box-background);
+  border-radius: var(--box-border-radius);
+  border: var(--box-border);
+  border-left: var(--box-border-left);
+  border-right: var(--box-border-right);
+  border-top: var(--box-border-top);
+  border-bottom: var(--box-border-bottom);
 }

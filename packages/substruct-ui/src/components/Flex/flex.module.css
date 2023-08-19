@@ -9,4 +9,10 @@
   max-height: var(--flex-max-height);
   min-width: var(--flex-min-width);
   min-height: var(--flex-min-height);
+  background: var(--flex-background-color);
+  border: var(--flex-border);
+  border-left: var(--flex-border-left);
+  border-right: var(--flex-border-right);
+  border-top: var(--flex-border-top);
+  border-bottom: var(--flex-border-bottom);
 }

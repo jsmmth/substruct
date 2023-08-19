@@ -65,13 +65,15 @@ export const Tag = React.forwardRef<TagElement, TagProps>(
       "--tag-text-color": customColor ? customColor : `var(--color-${color}-3)`,
       "--tag-padding": `var(--spacing-${size})`,
       "--tag-border-radius": `var(--borderRadius-${size})`,
-      "--tag-border": hasBorder ? `2px solid var(--color-${color}-3)` : "none",
+      "--tag-border": hasBorder ? `2px solid var(--tag-border-color)` : "none",
     } as React.CSSProperties;
 
     return (
       <div
         ref={forwardedRef}
         className={classNames(css.tag, className)}
+        data-size={size}
+        data-color={color}
         style={{
           ...styleVariables,
           ...style,
